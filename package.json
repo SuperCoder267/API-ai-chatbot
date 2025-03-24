@@ -1,0 +1,16 @@
+{
+    "name": "ai-chatbot-api",
+    "version": "1.0.0",
+    "description": "API for AI Chatbot",
+    "main": "index.js",
+    "scripts": {
+      "dev": "vercel dev",
+      "deploy": "vercel deploy --prod"
+    },
+    "dependencies": {
+      "node-fetch": "^3.3.0"
+    },
+    "devDependencies": {
+      "vercel": "^28.0.0"
+    }
+}

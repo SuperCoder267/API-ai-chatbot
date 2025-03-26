@@ -5,13 +5,13 @@ export default async function handler(req, res) {
 
     // Allowed requests from site
     const allowedOrigins = [ 
-        'https://127.0.0.1:5503',
+        'http://127.0.0.1:5503',
         'http://localhost:5503'
     ];
 
     const origin = req.headers.origin;
         if (allowedOrigins.includes(origin)) {
-        res.setHeader('Access-Control-Allow-Origin', origin);
+            res.setHeader('Access-Control-Allow-Origin', origin);
         }
   
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');

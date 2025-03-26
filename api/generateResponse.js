@@ -5,7 +5,7 @@ export default async function handler(req, res) {
 
     // Allowed requests from site
     const allowedOrigins = [ 
-        'http://127.0.0.1:5503',
+        'https://127.0.0.1:5503',
         'http://localhost:5503'
     ];
 

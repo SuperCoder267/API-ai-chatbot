@@ -81,7 +81,7 @@ export default async function handler(req, res) {
                 parts: [
                   {
                     text: messages
-                      .map(msg => `${msg.role}: ${msg.content}`)
+                      .map(msg => `${msg.role}: ${String(msg.content)}`)
                       .join('\n\n')
                   }
                 ]

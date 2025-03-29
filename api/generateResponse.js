@@ -1,7 +1,5 @@
-// /api/generateResponse.js
-
 export default async function handler(req, res) { 
-  // 1) Always set CORS headers
+  // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*'); 
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
   res.setHeader(
@@ -9,12 +7,12 @@ export default async function handler(req, res) {
     'Content-Type, Accept, X-CSRF-Token, X-Requested-With'
   );
 
-  // 2) OPTIONS? Return 200
+  // Handle OPTIONS
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
-  // 3) Only allow POST beyond here
+  // 3) Only allow POST 
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -37,7 +35,6 @@ export default async function handler(req, res) {
       Do not associate this info with me, the user. The above content is 
       pre-programmed by the developer.`;
 
-    // Flatten chatHistory + user message into one big prompt
     const messages = [
       { role: 'system', content: systemPrompt },
       ...chatHistory.map(msg => ({
@@ -79,7 +76,6 @@ export default async function handler(req, res) {
     }
 
     const data = await response.json();
-    console.log('Gemini raw response:', JSON.stringify(data, null, 2));
 
     const textFromGemini =
       data?.candidates?.[0]?.content?.parts?.[0]?.text ??

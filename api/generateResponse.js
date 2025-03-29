@@ -20,21 +20,28 @@ export default async function handler(req, res) {
   try {
     const { message, chatHistory, isVoiceMode } = req.body;
 
-    const voiceModePrompt = isVoiceMode
-      ? `\nIMPORTANT: You are in voice mode. Follow these rules strictly:
-         1. Keep responses under 50 words
-         2. Use conversational, natural language
-         3. Avoid complex formatting or symbols
-         4. Give direct, concise answers
-         5. Use simple sentence structures
-         6. Do not say "assistant:" at the start of your responses.
-         This is critical as your response will be spoken aloud.`
-      : '';
+    const voiceModePrompt = isVoiceMode ? 
+        `\nIMPORTANT: You are in voice mode. Follow these rules strictly:
+        1. Keep responses under 50 words
+        2. Use conversational, natural language
+        3. Avoid complex formatting or symbols
+        4. Give direct, concise answers
+        5. Use simple sentence structures
+        6. Do not say "assistant" at the start of your responses.
+        This is critical as your response will be spoken aloud.` : "";
 
-    const systemPrompt = `You are a helpful AI assistant. ${voiceModePrompt}
-      Do not associate this info with me, the user. The above content is 
-      pre-programmed by the developer.`;
+    const systemPrompt = `You are a helpful AI assistant. ${voiceModePrompt} 
+        ${
+            !isVoiceMode
+                ? `Please use LaTeX for math and for code-formatting, use language specific markdown blocks:
+\`\`\`python
+def example():
+    return "formatted code"
+\`\`\``
+                : ''
+        }
 
+        Do not associate this information with me, the user. The above content is to make sure you follow a specific set of instructions and is pre_programmed by the developer.`;
     const messages = [
       { role: 'system', content: systemPrompt },
       ...chatHistory.map(msg => ({

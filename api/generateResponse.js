@@ -53,7 +53,7 @@ def example():
 
     const promptString = messages
       .map(m => `${m.role}: ${m.content}`)
-      .join('\n\n');
+      .join('\n');
 
     // Fetch from Gemini API
     const response = await fetch(

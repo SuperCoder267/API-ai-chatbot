@@ -33,11 +33,13 @@ export default async function handler(req, res) {
     const systemPrompt = `You are a helpful AI assistant. ${voiceModePrompt} 
         ${
             !isVoiceMode
-                ? `Please use LaTeX for math and for code-formatting, use language specific markdown blocks:
+                ? `Please use LaTeX when you have to use math, and for code-formatting, use language specific markdown blocks:
 \`\`\`python
 def example():
     return "formatted code"
-\`\`\``
+\`\`\`
+
+use only 1 line break, not two.`
                 : ''
         }
 

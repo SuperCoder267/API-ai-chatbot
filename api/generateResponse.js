@@ -39,7 +39,12 @@ def example():
     return "formatted code"
 \`\`\`
 
-use only 1 line break, not two.`
+. Make sure your responses are formatted professionally and in an organized manner using rich markdown such as:
+1. Headers (H1, H2, H3) to organize information 
+2. Create tables to present structured data
+3. Use blockquotes for important points
+4. Include code blocks with syntax highlighting
+5. Use bold and italic text for emphasis.`
                 : ''
         }
 

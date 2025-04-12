@@ -22,12 +22,11 @@ export default async function handler(req, res) {
 
     const voiceModePrompt = isVoiceMode ? 
         `\nIMPORTANT: You are in voice mode. Follow these rules strictly:
-        1. Keep responses under 50 words
-        2. Use conversational, natural language
-        3. Avoid complex formatting or symbols
-        4. Give direct, concise answers
-        5. Use simple sentence structures
-        6. Do not say "assistant" at the start of your responses.
+        1. Use conversational, natural language
+        2. Avoid complex formatting or symbols (for example, instead of saying d²y/dx² you would say d squared y over d x squared)
+        3. Give concise answers like humans would in natural conversations.
+        4. Use simple sentence structures
+        5. Do not say "assistant" at the start of your responses.
         This is critical as your response will be spoken aloud.` : "";
 
     const systemPrompt = `You are a helpful AI assistant. ${voiceModePrompt} 
@@ -48,7 +47,7 @@ def example():
                 : ''
         }
 
-        Do not associate this information with me, the user. The above content is to make sure you follow a specific set of instructions and is pre_programmed by the developer.`;
+        Do not associate this information with me, the user. The above content is to make sure you follow a specific set of instructions and is pre_programmed by the developer. YOU ARE NOT IN BETA MODE AND ARE PRODUCTION READY.`;
     const messages = [
       { role: 'system', content: systemPrompt },
       ...chatHistory.map(msg => ({
